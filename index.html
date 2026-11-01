@@ -1,503 +1,281 @@
-<!DOCTYPE html>
-<html lang="hy">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Մեծ ակցիա | Հեքիաթային շոու</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Armenian:wght@400;500;600;700;800&display=swap');
 
-  <meta name="theme-color" content="#1b101b">
-  <meta name="description" content="4 պարուհի՝ հրեշտակի թևերով և լուսային թիթեռ։ Մեծ ակցիա՝ 55 000 դրամ։">
+#fairy-ad {
+  position:relative;
+  width:100%;
+  height:780px;
+  min-height:650px;
+  overflow:hidden;
+  background:#160b18;
+  color:white;
+  font-family:'Noto Serif Armenian',serif;
+  isolation:isolate;
+}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+#fairy-ad video {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
+}
 
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+#fairy-ad:before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:linear-gradient(
+    90deg,
+    rgba(20,5,22,.85),
+    rgba(20,5,22,.48) 55%,
+    rgba(20,5,22,.08)
+  );
+}
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+.fairy-content {
+  position:absolute;
+  left:8%;
+  top:50%;
+  transform:translateY(-50%);
+  max-width:640px;
+  padding:25px;
+}
 
-    :root {
-      --pink: #ffd4eb;
-      --gold: #f6d58a;
-      --white: #ffffff;
-      --dark: #1b101b;
-    }
+.fairy-top {
+  color:#ffdbad;
+  font-size:15px;
+  letter-spacing:2px;
+  animation:fairyFade 1s both;
+}
 
-    body {
-      min-height: 100vh;
-      background:
-        radial-gradient(ellipse at top, #402039 0%, #1b101b 60%, #100a12 100%);
-      color: white;
-      font-family: "Noto Sans Armenian", sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 22px 12px;
-    }
+.fairy-title {
+  font-size:clamp(42px,6.5vw,78px);
+  font-weight:800;
+  line-height:1.3;
+  margin:25px 0;
+  text-shadow:0 5px 25px #0008;
+  animation:fairyUp 1s .3s both;
+}
 
-    .ad {
-      position: relative;
-      width: min(100%, 430px);
-      aspect-ratio: 9 / 16;
-      overflow: hidden;
-      isolation: isolate;
-      background: #1b101b;
-      border: 1px solid rgba(246, 213, 138, 0.65);
-      border-radius: 22px;
-      box-shadow:
-        0 0 45px rgba(255, 128, 207, 0.14),
-        0 20px 80px rgba(0, 0, 0, 0.5);
-    }
+.fairy-title span {
+  display:block;
+  color:#ffe0a4;
+}
 
-    .video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -3;
-    }
+.fairy-description {
+  font-size:17px;
+  line-height:2;
+  color:#fff6ef;
+  animation:fairyUp 1s .6s both;
+}
 
-    .overlay {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(25, 8, 25, 0.52) 0%,
-          transparent 27%,
-          transparent 49%,
-          rgba(22, 8, 23, 0.2) 63%,
-          rgba(18, 7, 19, 0.88) 100%
-        );
-    }
+.fairy-price {
+  display:inline-block;
+  margin-top:25px;
+  padding:20px 30px;
+  text-align:center;
+  border:1px solid #ffe0a4;
+  background:rgba(38,12,35,.8);
+  box-shadow:0 0 35px #ffcf8130;
+  animation:fairyBoom 1.2s 1s both;
+}
 
-    .frame {
-      position: absolute;
-      inset: 13px;
-      border: 1px solid rgba(255, 220, 164, 0.55);
-      border-radius: 15px;
-      pointer-events: none;
-    }
+.fairy-price small {
+  display:block;
+  color:#ffdf9e;
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:2px;
+  margin-bottom:7px;
+}
 
-    .frame::before,
-    .frame::after {
-      content: "✦";
-      position: absolute;
-      color: var(--gold);
-      font-size: 20px;
-      text-shadow: 0 0 14px var(--gold);
-    }
+.fairy-price strong {
+  display:block;
+  font-size:49px;
+  color:#fff0c7;
+  font-weight:800;
+}
 
-    .frame::before {
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+.fairy-gift {
+  margin-top:22px;
+  font-size:17px;
+  line-height:1.9;
+  color:#fff5e6;
+  animation:fairyUp 1s 1.4s both;
+}
 
-    .frame::after {
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+.fairy-gift span {
+  color:#ffdc9b;
+  font-weight:800;
+}
 
-    .top-label {
-      position: absolute;
-      top: 7%;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      font-size: clamp(10px, 2.7vw, 13px);
-      letter-spacing: 4px;
-      color: var(--pink);
-      text-shadow: 0 0 16px rgba(255, 160, 222, 0.8);
-      animation: glow 3s ease-in-out infinite;
-    }
+.fairy-call {
+  display:inline-block;
+  margin-top:27px;
+  padding:18px 28px;
+  background:linear-gradient(135deg,#ffe7b9,#d6a45d);
+  color:#321628 !important;
+  text-decoration:none !important;
+  font-size:15px;
+  font-weight:800;
+  border-radius:4px;
+  box-shadow:0 8px 30px #ffcf8140;
+  transition:.3s;
+  animation:fairyUp 1s 1.7s both;
+}
 
-    .slides {
-      position: absolute;
-      top: 20%;
-      left: 7%;
-      width: 86%;
-      text-align: center;
-    }
+.fairy-call:hover {
+  transform:translateY(-4px) scale(1.04);
+  box-shadow:0 12px 35px #ffcf8170;
+}
 
-    .slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transform: translateY(24px) scale(0.96);
-      animation: showSlide 16s infinite;
-    }
+.fairy-sparkle {
+  position:absolute;
+  color:#ffe2ad;
+  text-shadow:0 0 18px #ffd58a;
+  pointer-events:none;
+  animation:fairySparkle 3s infinite;
+}
 
-    .slide:nth-child(1) {
-      animation-delay: 0s;
-    }
+.fairy-sparkle.a {
+  top:15%;
+  right:13%;
+  font-size:38px;
+}
 
-    .slide:nth-child(2) {
-      animation-delay: 4s;
-    }
+.fairy-sparkle.b {
+  top:65%;
+  right:20%;
+  font-size:25px;
+  animation-delay:1s;
+}
 
-    .slide:nth-child(3) {
-      animation-delay: 8s;
-    }
+.fairy-sparkle.c {
+  top:35%;
+  right:8%;
+  font-size:20px;
+  animation-delay:2s;
+}
 
-    .slide:nth-child(4) {
-      animation-delay: 12s;
-    }
+@keyframes fairyFade {
+  from {opacity:0}
+  to {opacity:1}
+}
 
-    .sale-tag {
-      display: inline-block;
-      padding: 9px 20px;
-      border: 1px solid var(--gold);
-      border-radius: 30px;
-      background: rgba(35, 12, 34, 0.72);
-      color: var(--gold);
-      font-size: clamp(15px, 4.2vw, 21px);
-      font-weight: 800;
-      letter-spacing: 1px;
-      box-shadow: 0 0 25px rgba(246, 213, 138, 0.2);
-    }
+@keyframes fairyUp {
+  from {opacity:0;transform:translateY(30px)}
+  to {opacity:1;transform:translateY(0)}
+}
 
-    .main-title {
-      margin-top: 18px;
-      font-size: clamp(24px, 6.8vw, 34px);
-      line-height: 1.55;
-      font-weight: 800;
-      color: var(--white);
-      text-shadow:
-        0 2px 5px rgba(0, 0, 0, 0.8),
-        0 0 24px rgba(255, 140, 211, 0.7);
-    }
+@keyframes fairyBoom {
+  0% {opacity:0;transform:scale(.5)}
+  65% {opacity:1;transform:scale(1.13)}
+  100% {opacity:1;transform:scale(1)}
+}
 
-    .subtitle {
-      margin-top: 13px;
-      font-size: clamp(15px, 4.1vw, 21px);
-      line-height: 1.8;
-      color: var(--pink);
-      font-weight: 600;
-      text-shadow: 0 2px 8px #241021;
-    }
+@keyframes fairySparkle {
+  0%,100% {opacity:.3;transform:scale(.7) rotate(0)}
+  50% {opacity:1;transform:scale(1.5) rotate(35deg)}
+}
 
-    .emoji {
-      display: block;
-      margin-bottom: 12px;
-      font-size: 45px;
-      filter: drop-shadow(0 0 14px rgba(255, 208, 239, 0.9));
-    }
+@media(max-width:600px) {
+  #fairy-ad {
+    height:740px;
+    min-height:740px;
+  }
 
-    .price-area {
-      position: absolute;
-      bottom: 10%;
-      left: 5%;
-      width: 90%;
-      text-align: center;
-      animation: priceGlow 3s ease-in-out infinite;
-    }
+  #fairy-ad:before {
+    background:linear-gradient(
+      0deg,
+      rgba(20,5,22,.97),
+      rgba(20,5,22,.65) 65%,
+      rgba(20,5,22,.12)
+    );
+  }
 
-    .price-caption {
-      font-size: clamp(13px, 3.5vw, 17px);
-      font-weight: 600;
-      color: white;
-      letter-spacing: 1px;
-      margin-bottom: 7px;
-      text-shadow: 0 2px 8px #000;
-    }
+  .fairy-content {
+    left:0;
+    right:0;
+    top:auto;
+    bottom:5%;
+    transform:none;
+    padding:20px;
+    text-align:center;
+  }
 
-    .price {
-      font-size: clamp(37px, 10vw, 51px);
-      line-height: 1.4;
-      font-weight: 800;
-      color: var(--gold);
-      white-space: nowrap;
-      text-shadow:
-        0 0 8px rgba(246, 213, 138, 0.85),
-        0 0 28px rgba(255, 168, 222, 0.5);
-    }
+  .fairy-title {
+    font-size:45px;
+    margin:17px 0;
+  }
 
-    .price-line {
-      width: 65%;
-      height: 1px;
-      margin: 7px auto 13px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        var(--gold),
-        var(--pink),
-        var(--gold),
-        transparent
-      );
-    }
+  .fairy-description {
+    font-size:14px;
+  }
 
-    .bottom-message {
-      font-size: clamp(11px, 3vw, 14px);
-      line-height: 1.8;
-      color: #fff0fa;
-      font-weight: 500;
-      text-shadow: 0 2px 8px #000;
-    }
+  .fairy-price strong {
+    font-size:40px;
+  }
 
-    .butterfly {
-      position: absolute;
-      font-size: 23px;
-      opacity: 0.85;
-      filter: drop-shadow(0 0 9px #ffbde7);
-      animation: float 5s ease-in-out infinite;
-    }
+  .fairy-price small {
+    font-size:17px;
+  }
 
-    .butterfly.one {
-      top: 37%;
-      left: 9%;
-    }
+  .fairy-gift {
+    font-size:14px;
+  }
 
-    .butterfly.two {
-      top: 45%;
-      right: 9%;
-      animation-delay: 1.5s;
-    }
+  .fairy-call {
+    font-size:13px;
+    padding:16px 19px;
+  }
+}
+</style>
 
-    .sparkle {
-      position: absolute;
-      color: #ffe9b7;
-      font-size: 16px;
-      opacity: 0;
-      animation: sparkle 3s infinite;
-    }
+<section id="fairy-ad">
 
-    .sparkle:nth-of-type(1) {
-      top: 28%;
-      left: 18%;
-      animation-delay: 0.2s;
-    }
+  <video autoplay muted loop playsinline preload="auto">
+    <source src="https://cdn.shopify.com/videos/c/o/v/c6c96545bd9b417695bcf4ce3eaed46e.mov" type="video/quicktime">
+  </video>
 
-    .sparkle:nth-of-type(2) {
-      top: 34%;
-      right: 17%;
-      animation-delay: 1s;
-    }
+  <div class="fairy-sparkle a">✧</div>
+  <div class="fairy-sparkle b">✦</div>
+  <div class="fairy-sparkle c">✧</div>
 
-    .sparkle:nth-of-type(3) {
-      top: 56%;
-      left: 20%;
-      animation-delay: 1.7s;
-    }
+  <div class="fairy-content">
 
-    .sparkle:nth-of-type(4) {
-      top: 60%;
-      right: 20%;
-      animation-delay: 0.8s;
-    }
-
-    @keyframes showSlide {
-      0% {
-        opacity: 0;
-        transform: translateY(24px) scale(0.96);
-      }
-
-      8% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      21% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      25% {
-        opacity: 0;
-        transform: translateY(-18px) scale(1.02);
-      }
-
-      100% {
-        opacity: 0;
-        transform: translateY(-18px) scale(1.02);
-      }
-    }
-
-    @keyframes glow {
-      0%, 100% {
-        opacity: 0.75;
-      }
-
-      50% {
-        opacity: 1;
-      }
-    }
-
-    @keyframes priceGlow {
-      0%, 100% {
-        transform: scale(1);
-      }
-
-      50% {
-        transform: scale(1.035);
-      }
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0) rotate(-8deg);
-      }
-
-      50% {
-        transform: translateY(-15px) rotate(8deg);
-      }
-    }
-
-    @keyframes sparkle {
-      0%, 100% {
-        opacity: 0;
-        transform: scale(0.5) rotate(0deg);
-      }
-
-      50% {
-        opacity: 1;
-        transform: scale(1.3) rotate(45deg);
-      }
-    }
-
-    @media (max-width: 360px) {
-      .ad {
-        border-radius: 14px;
-      }
-
-      .frame {
-        inset: 9px;
-      }
-
-      .slides {
-        top: 19%;
-      }
-
-      .price-area {
-        bottom: 8%;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <main class="ad" aria-label="Գովազդային տեսահոլովակ">
-
-    <video
-      class="video"
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto"
-    >
-      <source
-        src="https://cdn.shopify.com/videos/c/o/v/3bae482e640c4bdda516d7f293aa5d43.mov"
-        type="video/quicktime"
-      >
-      Ձեր դիտարկիչը չի աջակցում այս տեսանյութը։
-    </video>
-
-    <div class="overlay"></div>
-    <div class="frame"></div>
-
-    <div class="top-label">
-      ✦ ՀԵՔԻԱԹԱՅԻՆ ԱՇԽԱՐՀ ✦
+    <div class="fairy-top">
+      ✨ ՀԵՔԻԱԹԸ ՍԿՍՎՈՒՄ Է ԱՅՍՏԵՂ ✨
     </div>
 
-    <div class="slides">
+    <h1 class="fairy-title">
+      ՀՐԵՇՏԱԿԻ
+      <span>ՄԵԾ ՏԱՌԵՐ</span>
+    </h1>
 
-      <section class="slide">
-        <span class="emoji">✨</span>
-        <div class="sale-tag">💥 ՄԵԾ ԱԿՑԻԱ 💥</div>
-        <h1 class="main-title">
-          ՀԵՔԻԱԹԸ<br>
-          ՍԿՍՎՈՒՄ Է ԱՅՍՏԵՂ
-        </h1>
-        <p class="subtitle">
-          Անմոռանալի պահեր՝<br>
-          կախարդական մթնոլորտում
-        </p>
-      </section>
+    <p class="fairy-description">
+      Ձեր տոնին հաղորդեք յուրահատուկ շքեղություն։
+      Ստեղծեք հեքիաթային մթնոլորտ
+      և անմոռանալի հիշողություններ։
+    </p>
 
-      <section class="slide">
-        <span class="emoji">🪽</span>
-        <h2 class="main-title">
-          4 ՊԱՐՈՒՀԻ՝<br>
-          ՀՐԵՇՏԱԿԻ<br>
-          ԹԵՎԵՐՈՎ
-        </h2>
-        <p class="subtitle">
-          Նրբագեղություն և հեքիաթային շքեղություն
-        </p>
-      </section>
-
-      <section class="slide">
-        <span class="emoji">🦋</span>
-        <h2 class="main-title">
-          + ԼՈՒՍԱՅԻՆ<br>
-          ԹԻԹԵՌ
-        </h2>
-        <p class="subtitle">
-          Լույսեր, փայլեր ու իսկական հեքիաթ
-        </p>
-      </section>
-
-      <section class="slide">
-        <span class="emoji">💖</span>
-        <div class="sale-tag">ՀԱՏՈՒԿ ԱՌԱՋԱՐԿ</div>
-        <h2 class="main-title">
-          ՔՈ ՀԵՔԻԱԹԸ<br>
-          ՍԿՍՎՈՒՄ Է ՀԻՄԱ
-        </h2>
-        <p class="subtitle">
-          Բաց մի՛ թող մեծ ակցիան։
-        </p>
-      </section>
-
+    <div class="fairy-price">
+      <small>🔥 ԲՈՒՄ ԱԿՑԻԱ 🔥</small>
+      <strong>55,000 ֏</strong>
     </div>
 
-    <span class="butterfly one">🦋</span>
-    <span class="butterfly two">✨</span>
-
-    <span class="sparkle">✦</span>
-    <span class="sparkle">✧</span>
-    <span class="sparkle">✦</span>
-    <span class="sparkle">✧</span>
-
-    <div class="price-area">
-      <div class="price-caption">
-        ✨ ՄԵԾ ԱԿՑԻԱ ✨
-      </div>
-
-      <div class="price-line"></div>
-
-      <div class="price">
-        55 000 ֏
-      </div>
-
-      <div class="price-line"></div>
-
-      <p class="bottom-message">
-        4 ՊԱՐՈՒՀԻ՝ ՀՐԵՇՏԱԿԻ ԹԵՎԵՐՈՎ<br>
-        + ԼՈՒՍԱՅԻՆ ԹԻԹԵՌ
-      </p>
+    <div class="fairy-gift">
+      🎁 <span>ՆՎԵՐ՝</span> ԼՈՒՍԱՅԻՆ ՏԱՌԵՐ ✨
     </div>
 
-  </main>
+    <a href="tel:+37441666018" class="fairy-call">
+      ☎ ՀԱՐՑԵՐԻ ԵՎ ԱՄՐԱԳՐՄԱՆ ՀԱՄԱՐ՝ ԶԱՆԳԱՀԱՐԵՔ
+      <br>
+      +374 41 666 018
+    </a>
 
-</body>
-</html>
+  </div>
+</section>
